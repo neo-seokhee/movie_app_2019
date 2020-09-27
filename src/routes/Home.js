@@ -6,12 +6,12 @@ import "./Home.css";
 class Home extends React.Component {
   state = {
     isLoading: true,
-    movies: []
+    movies: [] //movies선언 
   };
   getMovies = async () => {
-    const {
+    const { 
       data: {
-        data: { movies }
+        data: { movies }      // API 정보를 movies에 저장 
       }
     } = await axios.get(
       "https://yts-proxy.now.sh/list_movies.json?sort_by=download_count"
@@ -21,6 +21,8 @@ class Home extends React.Component {
   componentDidMount() {
     this.getMovies();
   }
+
+  // API 정보를 Movie 컴포넌트로 각각 렌더한다. 
   render() {
     const { isLoading, movies } = this.state;
     return (
